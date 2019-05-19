@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Item Update - ひよこSEの足跡</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/item.css}" rel="stylesheet">
+    <link th:href="@{/css/item-update.css}" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" th:href="@{/}">ひよこSEの足跡</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+              <!-- Dropdown categories -->
+                <div th:include="components::dropdown_categories"></div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/about}">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <form id="updateForm" th:action="@{/item/updateExisting}" th:object="${updateForm}" method="post">
+      <!-- Hidden value -->
+      <input type="hidden" th:field="*{itemId}"/>
+      <div class="editor-container">
+        <!-- Post Title -->
+        <div class="editor-title">
+          <input class="editor-title-input" type="text" name="title" th:field="*{title}"  placeholder="Title"/>
+        </div>
+
+        <!-- Post Category -->
+        <div class="editor-category">
+          <input class="editor-category-input" type="text" name="categoryName" th:field="*{categoryName}" placeholder="Category"/>
+        </div>
+
+        <!-- Post Content -->
+        <div class="editor-content-container">
+          <!-- Markdown -->
+          <div class="content-markdown">
+            <div class="markdown-header">本文</div>
+            <div class="markdown-textarea-wrapper">
+              <textarea class="markdown-textarea" name="content" th:field="*{content}" placeholder="Content"></textarea>
+            </div>
+          </div>
+          <!-- Preview -->
+          <div class="content-preview">
+            <div class="preview-header">プレビュー</div>
+            <div class="preview-cheat-sheet">
+              <h4>Markdown記法のヒント</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor Footer -->
+        <div class="editor-footer">
+          <!-- Validation Messages -->
+          <div class="validation-error" th:if="${#fields.hasErrors('*')}">
+            <p th:if="${#fields.hasErrors('itemId')}">Item ID <span th:errors="itemId"></span></p>
+            <p th:if="${#fields.hasErrors('title')}">Title <span th:errors="title"></span></p>
+            <p th:if="${#fields.hasErrors('categoryName')}">Category  <span th:errors="categoryName"></span></p>
+            <p th:if="${#fields.hasErrors('content')}">Content <span th:errors="content"></span></p>
+          </div>
+
+          <!-- Delete Button -->
+          <button class="delete-button" tabindex="12">
+            <a id="deleteLink" href="#">Delete</a>
+          </button>
+          <!-- Update Button -->
+          <button class="update-button" tabindex="12">
+            <a id="updateLink" href="#">Update</a>
+          </button>
+
+        </div>
+      </div>
+    </form>
+
+    <form id="deleteForm" th:action="@{/item/deleteExisting}" th:object="${deleteForm}" method="post">
+      <input type="hidden" th:field="*{itemId}">
+    </form>
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/js/libs/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/libs/bootstrap.bundle.js}"></script>
+    <script th:src="@{/js/libs/marked.js}"></script>
+    <script th:src="@{/js/item-update.js}"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,57 @@
+Configutation:
+
+  Properties:
+    Property:
+      name: file-path
+      value: "/usr/local/var/log/chick_se_trace/"
+
+  Appenders:
+    # Console
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{ISO8601} [%-5level] %c{10} - %msg%n"
+
+    RollingFile:
+      # Application
+      - name: AppRollingFileAppender
+        fileName: ${file-path}/app.log
+        filePattern: "/usr/local/var/log/chick_se_trace/app.log.%d{yyyyMMdd}"
+        PatternLayout:
+          pattern: "%d{ISO8601} [%-5level] %c{10} - %msg%n"
+        policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+
+      # SQL
+      - name: SqlRollingFileAppender
+        fileName: ${file-path}/sql.log
+        filePattern: "/usr/local/var/log/chick_se_trace/sql.log.%d{yyyyMMdd}"
+        PatternLayout:
+          pattern: "%d{ISO8601} [%-5level] %c{10} - %msg%n"
+        policies:
+          TimeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+
+  Loggers:
+      Root:
+        level: INFO
+        AppenderRef:
+          - ref: ConsoleAppender
+
+      Logger:
+        - name: com.chick_se_trace.web
+          additivity: false
+          level: DEBUG
+          AppenderRef:
+            - ref: AppRollingFileAppender
+
+        - name: org.springframework.jdbc.core.JdbcTemplate
+          additivity: false
+          level: TRACE
+          AppenderRef:
+            - ref: SqlRollingFileAppender
+            - ref: ConsoleAppender

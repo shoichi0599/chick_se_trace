@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119835974-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119835974-1');
+  </script>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>About - ひよこSEの足跡</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap/bootstrap.css}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link th:href="@{/css/font-awesome/css/font-awesome.css}" rel="stylesheet">
+    <link th:href="@{/css/devicons/css/devicons.css}" rel="stylesheet">
+    <link th:href="@{/css/simple-line-icons/css/simple-line-icons.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/about.css}" rel="stylesheet">
+
+    <!-- Google AdSense-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1621451493740531",
+        enable_page_level_ads: true
+      });
+    </script>
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" th:href="@{/}">ひよこSEの足跡</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+              <!-- Dropdown categories -->
+                <div th:include="components::dropdown_categories"></div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/about}">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+          <h1 class="mb-0">Chick
+            <span class="text-primary">SE</span>
+          </h1>
+          <!-- Email -->
+          <!--<div class="subheading mb-5">-->
+            <!--<a href="mailto:name@email.com">name@email.com</a>-->
+          <!--</div>-->
+          <h3>Language</h3>
+          <p class="mb-1">Java (2015~)</p>
+          <p class="mb-1">Kotlin (2017~)</p>
+          <p class="mb-1">Ruby (2017~)</p>
+          <p class="mb-1">JavaScript (2017~)</p>
+
+          <ul class="list-inline list-social-icons mb-0">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/chicksetrace" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/shoichi-sato-741bb3106/" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/shoichi0599" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark fixed-bottom">
+      <div class="container">
+        <p class="m-0 text-center text-white"><small>Copyright &copy; Chick SE Trace 2018</small></p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/js/libs/jquery-3.3.1.js}"></script>
+    <script th:src="@{/js/libs/bootstrap.bundle.js}"></script>
+
+  </body>
+
+</html>

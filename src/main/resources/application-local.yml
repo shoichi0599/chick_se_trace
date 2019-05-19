@@ -1,0 +1,26 @@
+spring:
+  # Data source
+  datasource:
+    url: jdbc:mysql://localhost:3306/chick_se_trace
+    username: chick_se_master
+    password: R@chicksetrace0599
+    driverClassName: com.mysql.jdbc.Driver
+    sql-script-encoding: UTF-8
+
+  # Thymeleaf
+  thymeleaf:
+    cache: false
+
+  # Session
+  session:
+    store-type: redis
+
+  # Redis
+  redis:
+    host: localhost
+    port: 6379
+    password: test
+
+# Logging
+logging:
+  config: classpath:log4j2-local.yaml

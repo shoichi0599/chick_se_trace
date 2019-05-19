@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119835974-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-119835974-1');
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title><span th:text="#{category-name. + ${categoryName}}" th:remove="tag"></span> - ひよこSEの足跡</title>
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/css/bootstrap/bootstrap.css}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link th:href="@{/css/category.css}" rel="stylesheet">
+  <link th:href="@{/css/chicksetrace.css}" rel="stylesheet">
+
+  <!-- Google AdSense-->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1621451493740531",
+        enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">ひよこSEの足跡</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" th:href="@{/}">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+            <!-- Dropdown categories -->
+              <div th:include="components::dropdown_categories"></div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/about}">About</a>
+          </li>
+          <li class="nav-item" th:if="${session['chickSeSession']}">
+            <a class="nav-link" th:href="@{/item/create}">Post</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <!-- Category title  -->
+        <div class="category-name">
+          <div th:classappend="${categoryName} + |-logo category-logo|"></div>
+          <h1 class="category-h1" th:text="#{category-name. + ${categoryName}}">Page Heading</h1>
+        </div>
+        <!-- Blog Post -->
+        <div class="card mb-2" th:each="item : ${items}">
+          <a th:href="@{/item/__${item.id}__}" class="item-anchor">
+            <div class="card-body p-3">
+              <h2 class="card-title" th:text="${item.title}">Post Title</h2>
+            </div>
+          </a>
+          <div class="card-footer text-muted text-right p-2">
+            <small>Posted on <span th:text="${#temporals.format(item.createTime,'yyyy-MM-dd')}">January 1, 2018 at 12:00 PM</span></small>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+        <!-- Categories Widget -->
+              <div th:include="components::card_categories"></div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-4 bg-dark fixed-bottom">
+    <div class="container">
+      <p class="m-0 text-center text-white"><small>Copyright &copy; Chick SE Trace 2018</small></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{/js/libs/jquery-3.3.1.js}"></script>
+  <script th:src="@{/js/libs/bootstrap.bundle.js}"></script>
+</body>
+
+</html>
