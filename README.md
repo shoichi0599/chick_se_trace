@@ -14,6 +14,7 @@ cd {PATH_OF_REPOSITORY}
 
 ## How to start the application
 ```
+bash
 nohup java -jar /usr/local/product/chick_se_trace/chick_se_trace.jar --spring.profiles.active={pro | local} >/dev/null 2>&1 &
 ```
  
