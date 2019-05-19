@@ -1,1 +1,6 @@
 src/main/resources/static/js/libs/* linguist-vendored
+src/main/resources/static/css/bootstrap/* linguist-vendored
+src/main/resources/static/css/devicons/* linguist-vendored
+src/main/resources/static/css/font-awesome/* linguist-vendored
+src/main/resources/static/css/magnific-popup/* linguist-vendored
+src/main/resources/static/css/simple-line-icons/* linguist-vendored
